@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Project Add</h1>
+                        <h1>Category Add</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Project Add</li>
+                            <li class="breadcrumb-item active">Category Add</li>
                         </ol>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="form-group-div form-group col-md-4">
-                                <label for="inputCategory">Category</label>
+                                <label for="inputCategory">Parent Category</label>
                                 <div class="col-xs-12">
                                     <select name="" class="form-control custom-select" id="inputCategory">
                                         <option selected disabled value="1">a</option>
@@ -49,69 +49,6 @@
                                         <option value="3">c</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="form-group-div form-group col-md-4">
-                                <label for="inputQuantity">Quantity</label>
-                                <div class="col-xs-12">
-                                    <input type="number" id="inputQuantity" value="0" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group-div form-group col-md-4">
-                                <label for="inputPromotion">Promotion(%)</label>
-                                <div class="col-xs-12">
-                                    <input type="number" min="0" max="100" value="0" id="inputPromotion"
-                                        class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group-div form-group col-md-6">
-                                <label for="inputImportPrice">Import Price</label>
-                                <div class="col-sx-12">
-                                    <input type="number" id="inputImportPrice" value="0" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group-div form-group col-md-6">
-                                <label for="inputPrice">Price</label>
-                                <div class="col-sx-12">
-                                    <input type="number" id="inputPrice" value="0" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group-div form-group col-md-3">
-                                <label for="inputSize">Size</label>
-                                <div class="col-sx-12">
-                                    <select name="" id="inputSize" class="form-control custom-select">
-                                        <option disabled selected value="">x</option>
-                                        <option value="">s</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group-div form-group col-md-3">
-                                <label for="inputColor">Color</label>
-                                <div class="col-sx-12">
-                                    <select name="" id="inputColor" class="form-control custom-select">
-                                        <option disabled selected value="">red</option>
-                                        <option value="">blue</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group-div form-group">
-                                <label for="inputShortDescription">Short Description</label>
-                                <div class="col-xs-12">
-                                    <input type="text" name="" id="inputShortDescription" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group-div form-group">
-                                <label for="inputDescription">Description</label>
-                                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
-                                <script>
-                                    CKEDITOR.replace('inputDescription');
-                                </script>
-                            </div>
-                            <div class="form-group-div form-group">
-                                <label for="inputDetailDescription">Detail Description</label>
-                                <textarea id="inputDetailDescription" class="form-control" rows="4"></textarea>
-                                <script>
-                                    CKEDITOR.replace('inputDetailDescription');
-                                </script>
                             </div>
                             <div class="form-group-div form-group col-md-2">
                                 <label for="inputStatus">Status</label>
@@ -131,8 +68,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Image</h3>
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                    title="Collapse">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
                             </div>
@@ -156,7 +92,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group-div form-group">
+                            {{-- <div class="form-group-div form-group">
                                 <label for='image-extra'>More image</label>
                                 <div class="col-sx-12">
                                     <div class="dropzone">
@@ -169,7 +105,7 @@
                                     <input type="file" hidden name="" multiple id="image-extra-file">
                                     <div id="value-image-extra"></div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <!-- /.card-body -->
                     </div>

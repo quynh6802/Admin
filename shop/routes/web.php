@@ -22,5 +22,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'product'], function () {
         Route::get('/', [ProductController::class, 'index']);
         Route::get('/add', [ProductController::class, 'add']);
+        Route::get('/edit', [ProductController::class, 'edit']);
     });
+    Route::get('/category-product', [ProductController::class, 'category']);
+    Route::get('/category-product/add', [ProductController::class, 'addCategory']);
+    Route::get('/category-product/edit', [ProductController::class, 'editCategory']);
 });
