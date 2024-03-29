@@ -3981,8 +3981,12 @@
     exports.Treeview = Treeview;
 
     Object.defineProperty(exports, "__esModule", { value: true });
+
     $(".kt-avatar_upload").click(function () {
         $("#inputAvatarUpload").click();
+    });
+    $(".dropzone-msg").click(function () {
+        $("#image-extra-file").click();
     });
     // Khi input file thay đổi
     $("#inputAvatarUpload").change(function () {
@@ -4000,6 +4004,38 @@
     $("#deleteAvatar").click(function () {
         $("#avatar").attr("src", "dist/img/avatar.png"); // Cập nhật ảnh về ảnh mặc định
         $("#inputAvatar").val(""); // Xóa giá trị của input file
+    });
+
+    $("#image-extra-file").change(function (event) {
+        var files = event.target.files;
+
+        $.each(files, function (index, file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var imageDiv = $("<div>"); // Tạo một thẻ div mới
+                imageDiv.addClass("priview"); // Thêm class cho thẻ div
+
+                var imageElement = $("<img>"); // Tạo một thẻ img mới
+                imageElement.addClass("img-thumbnail");
+                imageElement.attr("src", e.target.result);
+                imageElement.css({ width: "150px", height: "150px" });
+
+                // Thêm thẻ img vào trong thẻ div
+                imageDiv.append(imageElement);
+
+                // Thêm thẻ div vào container
+                $("#imageContainer").append(imageDiv);
+
+                var input_extra = $("<input />", {
+                    type: "hidden",
+                    class: "input-compele-" + index,
+                    name: "image_extra[]",
+                    value: e.target.result,
+                });
+                $("#value-image-extra").append(input_extra);
+            };
+            reader.readAsDataURL(file);
+        });
     });
 });
 //# sourceMappingURL=adminlte.js.map

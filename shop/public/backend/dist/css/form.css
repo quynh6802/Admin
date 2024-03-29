@@ -53,3 +53,32 @@ div .form-group-div {
     width: 200px !important;
     height: 200px !important;
 }
+
+.dropzone {
+    border: 1.5px dashed #bababa;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 20px
+}
+
+.dropzone-msg {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.dropzone-msg-title {
+
+    font-size: 20px;
+    font-weight: 300;
+}
+
+#imageContainer {
+    display: inline-block;
+}
+
+.priview {
+    float: left;
+    margin: 10px;
+}

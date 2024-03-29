@@ -94,6 +94,12 @@
                                 </div>
                             </div>
                             <div class="form-group-div form-group">
+                                <label for="inputShortDescription">Short Description</label>
+                                <div class="col-xs-12">
+                                    <input type="text" name="" id="inputShortDescription" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group-div form-group">
                                 <label for="inputDescription">Description</label>
                                 <textarea id="inputDescription" class="form-control" rows="4"></textarea>
                                 <script>
@@ -107,21 +113,30 @@
                                     CKEDITOR.replace('inputDetailDescription');
                                 </script>
                             </div>
-                            <div class="form-group-div form-group">
-                                <label for="inputClientCompany">Client Company</label>
-                                <input type="text" id="inputClientCompany" class="form-control">
-                            </div>
-                            <div class="form-group-div form-group">
-                                <label for="inputProjectLeader">Project Leader</label>
-                                <input type="text" id="inputProjectLeader" class="form-control">
-                            </div>
                             <div class="form-group-div form-group col-md-2">
                                 <label for="inputStatus">Status</label>
                                 <div class="col-xs-12">
-                                    <label for="">Active
-                                        <input type="checkbox">
+                                    <label for="" class="kt-checkbox">Active
+                                        <input type="checkbox" class="">
                                     </label>
                                 </div>
+                                <style>
+                                    .kt-checkbox {
+                                        position: relative;
+                                        display: inline-block;
+                                        padding-left: 30px;
+                                    }
+
+                                    .kt-checkbox input {
+                                        position: absolute;
+                                        left: 0;
+                                        width: 16px;
+                                        height: 16px;
+                                        margin: 0;
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                    }
+                                </style>
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -166,22 +181,10 @@
                                             <h3 class="dropzone-msg-title">Click upload</h3>
                                             <p>upload up to 6 files</p>
                                         </div>
+                                        <div id="imageContainer"></div>
                                     </div>
-                                    <style>
-                                        .dropzone {
-                                            border: 1.5px dashed #bababa;
-                                        }
-
-                                        .dropzone-msg {
-                                            padding: 10px;
-                                        }
-
-                                        .dropzone-msg-title {
-
-                                            font-size: 20px;
-                                            font-weight: 300;
-                                        }
-                                    </style>
+                                    <input type="file" hidden name="" multiple id="image-extra-file">
+                                    <div id="value-image-extra"></div>
                                 </div>
                             </div>
                         </div>
