@@ -1,3 +1,47 @@
+.form-control:focus {
+    border-color: #6c757d;
+    outline: none;
+}
+
+.head-action {
+    margin-left: 10px;
+}
+
+.head-search input {
+    border-right-width: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.head-search button {
+    border: #6c757d solid 1px;
+    color: #6c757d;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+@media(max-width:576px) {
+
+    .head-lable h3,
+    .head-search,
+    .head-action {
+        float: none !important;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px
+    }
+
+    .card-tools {
+        float: none !important;
+    }
+
+    .card-tools .form-inline {
+        flex-flow: unset;
+        align-items: normal;
+    }
+}
+
 div .form-group-div {
     display: inline-block;
     float: left;

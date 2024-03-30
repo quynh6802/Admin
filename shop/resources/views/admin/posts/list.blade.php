@@ -25,8 +25,9 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Projects</h3>
-
+                    <div class="head-lable">
+                        <h3 class="card-title">Projects</h3>
+                    </div>
                     <div class="card-tools">
                         <div class="float-left head-search">
                             <form class="form-inline">
@@ -45,6 +46,8 @@
                         </button> --}}
                     </div>
                 </div>
+                {{-- <div class="card-body p-0">abc</div>
+                <hr /> --}}
                 <div class="card-body p-0">
                     <table class="table table-striped projects">
                         <thead>
@@ -59,7 +62,13 @@
                                     Name
                                 </th>
                                 <th>
-                                    Parent
+                                    Category
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                                <th>
+                                    Quantity
                                 </th>
                                 <th class="text-center">
                                     Status
@@ -79,10 +88,16 @@
                                     </li>
                                 </td>
                                 <td>
-                                    abc
+                                    <p>abc</p>
                                 </td>
                                 <td>
-                                    abc
+                                    <p>abc</p>
+                                </td>
+                                <td>
+                                    <p>123</p>
+                                </td>
+                                <td>
+                                    <p>456</p>
                                 </td>
                                 <td class="project-state">
                                     <span class="badge badge-success">Success</span>
@@ -116,16 +131,4 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    <script>
-        $(document).on('click', '.file_image_thumb', function() {
-            // alert($(this).attr('src').split('timthumb.php?src=')[1]);
-            if ($(this).attr('src').split('timthumb.php?src=')[1] == undefined) {
-                $('#blank_modal .modal-body').html('<img src="' + $(this).attr('src') + '"/>');
-            } else {
-                $('#blank_modal .modal-body').html('<img src="' + $(this).attr('src').split('timthumb.php?src=')[1]
-                    .split('&w=')[0].split('&h=')[0] + '"/>');
-            }
-            $('#blank_modal').modal();
-        });
-    </script>
 @endsection

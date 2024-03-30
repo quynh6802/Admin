@@ -25,17 +25,29 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Projects</h3>
-
+                    <div class="head-lable">
+                        <h3 class="card-title">Projects</h3>
+                    </div>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <div class="float-left head-search">
+                            <form class="form-inline">
+                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+                        <div class="float-left head-action">
+                            <a href="" class="btn btn-primary"><i class="fas fa-plus"></i>Create</a>
+                        </div>
+                        {{-- <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
                         </button>
                         <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
                             <i class="fas fa-times"></i>
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
+                {{-- <div class="card-body p-0">abc</div>
+                <hr /> --}}
                 <div class="card-body p-0">
                     <table class="table table-striped projects">
                         <thead>
@@ -90,7 +102,7 @@
                                 <td class="project-state">
                                     <span class="badge badge-success">Success</span>
                                 </td>
-                                <td class="project-actions text-right">
+                                <td class="project-actions text-right" width="18%">
                                     <a class="btn btn-primary btn-sm" href="#">
                                         <i class="fas fa-folder">
                                         </i>

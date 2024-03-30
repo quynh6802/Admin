@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Category Add</h1>
+                        <h1>Project Add</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Category Add</li>
+                            <li class="breadcrumb-item active">Project Add</li>
                         </ol>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="form-group-div form-group col-md-4">
-                                <label for="inputCategory">Parent Category</label>
+                                <label for="inputCategory">Location</label>
                                 <div class="col-xs-12">
                                     <select name="" class="form-control custom-select" id="inputCategory">
                                         <option selected disabled value="1">a</option>
@@ -50,12 +50,48 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group-div form-group col-md-3">
+                                <label for="inputSize">Display order</label>
+                                <div class="col-sx-12">
+                                    <select name="" id="inputSize" class="form-control custom-select">
+                                        <option disabled selected value="">x</option>
+                                        <option value="">s</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group-div form-group">
+                                <label for="inputIntro">Intro</label>
+                                <div class="col-xs-12">
+                                    <textarea name="" id="inputIntro" class="form-control" rows="1" maxlength="120"></textarea>
+                                </div>
+                            </div>
+
+                            {{-- <div class="form-group-div form-group">
+                                <label for="inputDescription">Description</label>
+                                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                                <script>
+                                    CKEDITOR.replace('inputDescription');
+                                </script>
+                            </div> --}}
+                            {{-- <div class="form-group-div form-group">
+                                <label for="inputDetailDescription">Detail Description</label>
+                                <textarea id="inputDetailDescription" class="form-control" rows="4"></textarea>
+                                <script>
+                                    CKEDITOR.replace('inputDetailDescription');
+                                </script>
+                            </div> --}}
                             <div class="form-group-div form-group col-md-2">
                                 <label for="inputStatus">Status</label>
                                 <div class="col-xs-12">
                                     <label for="" class="kt-checkbox">Active
-                                        <input type="checkbox" class="">
+                                        <input type="checkbox" class="" id="inputStatus">
                                     </label>
+                                </div>
+                            </div>
+                            <div class="form-group-div form-group">
+                                <label for="inputLink">Link to</label>
+                                <div class="col-sx-12">
+                                    <input type="text" name="" id="inputLink" class="form-control" value="/">
                                 </div>
                             </div>
                         </div>

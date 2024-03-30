@@ -55,11 +55,14 @@
                                 <th>
                                     Image
                                 </th>
-                                <th>
+                                <th width="20%">
                                     Name
                                 </th>
                                 <th>
-                                    Parent
+                                    Location
+                                </th>
+                                <th>
+                                    display order
                                 </th>
                                 <th class="text-center">
                                     Status
@@ -79,10 +82,13 @@
                                     </li>
                                 </td>
                                 <td>
-                                    abc
+                                    <p>abc</p>
                                 </td>
                                 <td>
-                                    abc
+                                    <p>abc</p>
+                                </td>
+                                <td>
+                                    <p>456</p>
                                 </td>
                                 <td class="project-state">
                                     <span class="badge badge-success">Success</span>
@@ -116,16 +122,4 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    <script>
-        $(document).on('click', '.file_image_thumb', function() {
-            // alert($(this).attr('src').split('timthumb.php?src=')[1]);
-            if ($(this).attr('src').split('timthumb.php?src=')[1] == undefined) {
-                $('#blank_modal .modal-body').html('<img src="' + $(this).attr('src') + '"/>');
-            } else {
-                $('#blank_modal .modal-body').html('<img src="' + $(this).attr('src').split('timthumb.php?src=')[1]
-                    .split('&w=')[0].split('&h=')[0] + '"/>');
-            }
-            $('#blank_modal').modal();
-        });
-    </script>
 @endsection
