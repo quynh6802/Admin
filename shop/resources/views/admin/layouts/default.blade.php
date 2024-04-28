@@ -13,7 +13,8 @@
         {{-- header --}}
         @include('admin.partials.header')
         {{-- sidebar --}}
-        @include('admin.partials.sidebar')
+        {{-- @include('admin.partials.sidebar') --}}
+        <x-sidebar />
         {{-- page --}}
         @yield('main_content')
 

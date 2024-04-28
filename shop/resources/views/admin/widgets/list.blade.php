@@ -53,9 +53,6 @@
                                     #
                                 </th>
                                 <th>
-                                    Image
-                                </th>
-                                <th width="20%">
                                     Name
                                 </th>
                                 <th>
@@ -75,11 +72,6 @@
                             <tr>
                                 <td>
                                     #
-                                </td>
-                                <td>
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar file_image_thumb" src="dist/img/avatar.png">
-                                    </li>
                                 </td>
                                 <td>
                                     <p>abc</p>

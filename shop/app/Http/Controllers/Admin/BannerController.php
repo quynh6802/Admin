@@ -2,21 +2,108 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpes\CommonHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class BannerController extends Controller
+class BannerController extends CURDBaseController
 {
-    public function index()
+    protected $module = [
+        'code' => 'banner',
+        'table' => 'banners',
+        'label' => 'Banner',
+        'modal' => '\App\Models\Banner',
+        'list' => [
+            ['name' => 'image', 'type' => 'image', 'class' => '', 'label' => 'Image'],
+            ['name' => 'name', 'type' => 'text', 'class' => '', 'label' => 'Name'],
+            ['name' => 'link_to', 'type' => 'text', 'class' => '', 'label' => 'Link to'],
+            ['name' => 'status', 'type' => 'status', 'class' => '', 'label' => 'Status']
+        ],
+        'form' => [
+            'general_tab' => [
+                ['name' => 'name', 'type' => 'text', 'class' => 'required', 'label' => 'Name'],
+                ['name' => 'location', 'type' => 'select', 'class' => '', 'option' => [
+                    'vị trí 1' => 'vị trí 1',
+                    'vị trí 2' => 'vị trí 2',
+                ], 'label' => 'Location', 'group_class' => 'col-md-4'],
+                ['name' => 'order_no', 'type' => 'number', 'class' => '', 'label' => 'Order no', 'group_class' => 'col-md-4'],
+                ['name' => 'link', 'type' => 'text', 'class' => '', 'label' => 'Link to'],
+                ['name' => 'intro', 'type' => 'textarea', 'class' => '', 'label' => 'Intro', 'inner' => 'rows=1'],
+                ['name' => 'description', 'type' => 'textarea', 'class' => '', 'label' => 'Description', 'inner' => 'rows=1'],
+                ['name' => 'status', 'type' => 'checkbox', 'class' => '', 'label' => 'Status', 'group_class' => 'col-md-2'],
+            ],
+            'image_tab' => [
+                ['name' => 'image', 'type' => 'file_editor', 'class' => 'required', 'label' => 'Avatar'],
+                ['name' => 'image_extra', 'type' => 'multi_image_extra', 'class' => 'required', 'label' => 'Avatar'],
+            ],
+        ],
+    ];
+    public function index(Request $request)
     {
-        return view('admin.banners.list');
+        $data = $this->getDataList($request);
+        return view('admin.list')->with($data);
     }
-    public function add()
+    public function add(Request $request)
     {
-        return view('admin.banners.add');
+        try {
+            if (!$_POST) {
+                $data = $this->getDataAdd($request);
+                return view('admin.add')->with($data);
+            } elseif ($_POST) {
+                $data = $this->processingValueInFields($request, $this->getAllFormFields());
+                foreach ($data as $k => $v) {
+                    $this->model->$k = $v;
+                }
+                if ($this->model->save()) {
+                    CommonHelper::flushCache($this->module['table_name']);
+                    $this->afterAddLog($request, $this->model);
+                    CommonHelper::one_time_message('success', 'Thêm mới thành công!');
+                } else {
+                    CommonHelper::one_time_message('error', 'Lỗi tao mới. Vui lòng load lại trang và thử lại!');
+                }
+                return redirect("admin/" . $this->module['code']);
+            }
+        } catch (\Exception $e) {
+            CommonHelper::one_time_message('error', $e->getMessage());
+            return redirect()->back()->withInput();
+        }
     }
-    public function edit()
+    public function edit(Request $request)
     {
-        return view('admin.banners.edit');
+        try {
+            $item = $this->model->find($request->id);
+            if (!$_POST) {
+                $data = $this->getDataEdit($request, $item);
+                return view('admin.edit')->with($data);
+            } elseif ($_POST) {
+                $data = $this->processingValueInFields($request, $this->getAllFormFields());
+                foreach ($data as $k => $v) {
+                    $item->$k = $v;
+                }
+                if ($item->save()) {
+                    CommonHelper::flushCache($this->module['table_name']);
+                    $this->afterAddLog($request, $this->model);
+                    CommonHelper::one_time_message('success', 'Thêm mới thành công!');
+                } else {
+                    CommonHelper::one_time_message('error', 'Lỗi tao mới. Vui lòng load lại trang và thử lại!');
+                }
+                return redirect("admin/" . $this->module['code']);
+            }
+        } catch (\Exception $e) {
+            CommonHelper::one_time_message('error', $e->getMessage());
+            return redirect()->back()->withInput();
+        }
+    }
+    public function delete(Request $request)
+    {
+        try {
+            $item = $this->model->find($request->id);
+            $item->delete();
+            CommonHelper::one_time_message('success', 'Xoá thành công!');
+            return redirect('admin/' . $this->module['code']);
+        } catch (\Exception $e) {
+            CommonHelper::one_time_message('error', $e->getMessage());
+            return redirect()->back();
+        }
     }
 }

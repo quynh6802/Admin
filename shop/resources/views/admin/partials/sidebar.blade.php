@@ -1,3 +1,4 @@
+{{-- {{ dd(request()->path()) }} --}}
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -36,114 +37,75 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-       with font-awesome or any other icon font library -->
-                <li class="nav-item">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Dashboard
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-desktop"></i>
-                        <p>
-                            Theme
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
+                @foreach ($sidebar['list'] as $field)
+                    @if (isset($field['items']))
+                        <li class="nav-item ">
+                            <a href="#"
+                                class="nav-link @foreach ($field['items'] as $item){{ request()->path() == $item['link'] ? 'active' : '' }} @endforeach">
+                                {!! $field['icon'] !!}
+                                <p>
+                                    {{ $field['label'] }}
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @foreach ($field['items'] as $item)
+                                    <li class="nav-item">
+                                        <a
+                                            href="/{{ $item['link'] }}"class="nav-link {{ request()->path() == $item['link'] ? 'active' : '' }}">
+                                            {!! $item['icon'] !!}
+                                            <p>{{ $item['label'] }}</p>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @else
                         <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Banner</p>
+                            <a href="/{{ $field['link'] }}"
+                                class="nav-link {{ request()->path() == $field['link'] ? 'active' : '' }}">
+                                {!! $field['icon'] !!}
+                                <p>
+                                    {{ $field['label'] }}
+                                </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Widget</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Menu</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-envelope-open-text"></i>
-                        <p>
-                            Post
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>All posts</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Creact new post</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Category</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-folder"></i>
-                        <p>
-                            Product
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>All product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Creact new product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Category</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
-                        <i class="nav-icon fas fa-address-book"></i>
-                        <p>
-                            Contact
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
+                    @endif
+                @endforeach
                 <li class="nav-header">Setting</li>
-                <li class="nav-item">
+                @foreach ($sidebar['setting'] as $field)
+                    @if (isset($field['items']))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                {!! $field['icon'] !!}
+                                <p>
+                                    {{ $field['label'] }}
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @foreach ($field['items'] as $item)
+                                    <li class="nav-item">
+                                        <a href="/{{ $item['link'] }}"class="nav-link">
+                                            {!! $item['icon'] !!}
+                                            <p>{{ $item['label'] }}</p>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="/{{ $field['link'] }}" class="nav-link">
+                                {!! $field['icon'] !!}
+                                <p>
+                                    {{ $field['label'] }}
+                                </p>
+                            </a>
+                        </li>
+                    @endif
+                @endforeach
+                {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
@@ -194,7 +156,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

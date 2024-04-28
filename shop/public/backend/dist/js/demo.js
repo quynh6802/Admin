@@ -822,4 +822,9 @@
             .addClass("custom-select mb-3 text-light border-0 ")
             .addClass(active_brand_color);
     }
+
+    var $required = $(".required");
+    var $span = $("<span>*</span>");
+    $span.addClass("color_btn");
+    $required.append($span);
 })(jQuery);

@@ -1,0 +1,1 @@
+{{ formatPrice($item->{$field['name']}) }}

@@ -3982,60 +3982,28 @@
 
     Object.defineProperty(exports, "__esModule", { value: true });
 
-    $(".kt-avatar_upload").click(function () {
-        $("#inputAvatarUpload").click();
-    });
-    $(".dropzone-msg").click(function () {
-        $("#image-extra-file").click();
-    });
-    // Khi input file thay đổi
-    $("#inputAvatarUpload").change(function () {
-        var input = this;
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $("#avatar").attr("src", e.target.result);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    });
-
-    // Khi click vào biểu tượng xóa
-    $("#deleteAvatar").click(function () {
-        $("#avatar").attr("src", "dist/img/avatar.png"); // Cập nhật ảnh về ảnh mặc định
-        $("#inputAvatar").val(""); // Xóa giá trị của input file
-    });
-
-    $("#image-extra-file").change(function (event) {
-        var files = event.target.files;
-
-        $.each(files, function (index, file) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                var imageDiv = $("<div>"); // Tạo một thẻ div mới
-                imageDiv.addClass("priview"); // Thêm class cho thẻ div
-
-                var imageElement = $("<img>"); // Tạo một thẻ img mới
-                imageElement.addClass("img-thumbnail");
-                imageElement.attr("src", e.target.result);
-                imageElement.css({ width: "150px", height: "150px" });
-
-                // Thêm thẻ img vào trong thẻ div
-                imageDiv.append(imageElement);
-
-                // Thêm thẻ div vào container
-                $("#imageContainer").append(imageDiv);
-
-                var input_extra = $("<input />", {
-                    type: "hidden",
-                    class: "input-compele-" + index,
-                    name: "image_extra[]",
-                    value: e.target.result,
-                });
-                $("#value-image-extra").append(input_extra);
-            };
-            reader.readAsDataURL(file);
-        });
+    // slug
+    $("#name").keyup(function () {
+        var slug = $(this).val().toLowerCase();
+        slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, "a");
+        slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, "e");
+        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, "i");
+        slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, "o");
+        slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, "u");
+        slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, "y");
+        slug = slug.replace(/đ/gi, "d");
+        slug = slug.replace(
+            /\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi,
+            ""
+        );
+        slug = slug.replace(/ /gi, "-");
+        slug = slug.replace(/\-\-\-\-\-/gi, "-");
+        slug = slug.replace(/\-\-\-\-/gi, "-");
+        slug = slug.replace(/\-\-\-/gi, "-");
+        slug = slug.replace(/\-\-/gi, "-");
+        slug = "@" + slug + "@";
+        slug = slug.replace(/\@\-|\-\@|\@/gi, "");
+        $("#slug").val(slug);
     });
 });
 //# sourceMappingURL=adminlte.js.map

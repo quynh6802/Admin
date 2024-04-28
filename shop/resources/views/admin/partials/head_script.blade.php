@@ -9,3 +9,5 @@
 <link rel="stylesheet" href="dist/css/form.css">
 {{-- js --}}
 <script src="plugins/ckeditor/ckeditor.js"></script>
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>

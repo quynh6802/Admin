@@ -55,7 +55,7 @@
                                 <th>
                                     Image
                                 </th>
-                                <th width="20%">
+                                <th>
                                     Name
                                 </th>
                                 <th>
